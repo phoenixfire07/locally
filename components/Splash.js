@@ -12,6 +12,8 @@ import { backgroundColor } from "../constants";
 
 export default function Splash() {
   const seattleFadeAnim = useRef(new Animated.Value(0)).current;
+  const splashFadeAnim = useRef(new Animated.Value(1)).current;
+  const [beginFadeOut, setBeginFadeout] = useState(false);
 
   const fadeIn = () => {
     Animated.timing(seattleFadeAnim, {
@@ -22,49 +24,74 @@ export default function Splash() {
   };
 
   useEffect(() => {
+    if (beginFadeOut) {
+      fadeOut();
+    }
+  }, [beginFadeOut]);
+
+  useEffect(() => {
     fadeIn();
+    const timer = setTimeout(() => {
+      setBeginFadeout(true);
+    }, 4300);
+    return () => clearTimeout(timer);
   }, []);
 
+  const fadeOut = () => {
+    Animated.timing(splashFadeAnim, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
-    <ImageBackground
-      source={require("../images/SeattlePic.png")}
-      resizeMode="cover"
-      style={styles.seattleImage}
+    <Animated.View
+      style={{ height: "100%", width: "100%", opacity: splashFadeAnim }}
     >
-      <Image style={styles.locally} source={require("../images/Locally.png")} />
-      <Animated.View
-        style={{ ...styles.seattleContainer, opacity: seattleFadeAnim }}
+      <ImageBackground
+        source={require("../images/SeattlePic.png")}
+        resizeMode="cover"
+        style={styles.seattleImage}
       >
-        <Animated.Image
-          style={styles.letterS}
-          source={require("../images/S-outline.png")}
+        <Image
+          style={styles.locally}
+          source={require("../images/Locally.png")}
         />
-        <Animated.Image
-          style={{ ...styles.letterE }}
-          source={require("../images/E-outline.png")}
-        />
-        <Animated.Image
-          style={{ ...styles.letterA }}
-          source={require("../images/A-outline.png")}
-        />
-        <Animated.Image
-          style={{ ...styles.letterT }}
-          source={require("../images/T-outline.png")}
-        />
-        <Animated.Image
-          style={{ ...styles.letterT }}
-          source={require("../images/T-outline.png")}
-        />
-        <Animated.Image
-          style={{ ...styles.letterL }}
-          source={require("../images/L-outline.png")}
-        />
-        <Animated.Image
-          style={{ ...styles.letterE }}
-          source={require("../images/E-outline.png")}
-        />
-      </Animated.View>
-    </ImageBackground>
+        <Animated.View
+          style={{ ...styles.seattleContainer, opacity: seattleFadeAnim }}
+        >
+          <Animated.Image
+            style={styles.letterS}
+            source={require("../images/S-outline.png")}
+          />
+          <Animated.Image
+            style={{ ...styles.letterE }}
+            source={require("../images/E-outline.png")}
+          />
+          <Animated.Image
+            style={{ ...styles.letterA }}
+            source={require("../images/A-outline.png")}
+          />
+          <Animated.Image
+            style={{ ...styles.letterT }}
+            source={require("../images/T-outline.png")}
+          />
+          <Animated.Image
+            style={{ ...styles.letterT }}
+            source={require("../images/T-outline.png")}
+          />
+          <Animated.Image
+            style={{ ...styles.letterL }}
+            source={require("../images/L-outline.png")}
+          />
+          <Animated.Image
+            style={{ ...styles.letterE }}
+            source={require("../images/E-outline.png")}
+          />
+        </Animated.View>
+      </ImageBackground>
+    </Animated.View>
   );
 }
 

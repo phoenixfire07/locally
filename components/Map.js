@@ -2,10 +2,12 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { StyleSheet, View, Text, Animated } from "react-native";
 import { AppContext, AppDispatchContext } from "../state/context";
+import { handleItemSelected, fetchItems } from "../state/actions";
 
 export default function Map() {
+  const dispatch = useContext(AppDispatchContext);
+  const { selectedItem, items } = useContext(AppContext);
   const mapFadeAnim = useRef(new Animated.Value(0)).current;
-  const [items, setItems] = useState([]);
 
   const fadeIn = () => {
     Animated.timing(mapFadeAnim, {
@@ -15,25 +17,26 @@ export default function Map() {
     }).start();
   };
 
+  useEffect(() => {}, [items]);
+
   useEffect(() => {
     fadeIn();
-    fetch("https://storage.googleapis.com/locally_seattle_images/test.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      cache: "no-cache",
-    })
-      .then((response) => {
-        console.log();
-        return response.json();
-      })
-      .then((json) => {
-        setItems(json.items);
-        console.log(json.items[0].latitude);
-        console.log(json.items[0].longitude);
-      });
+    fetchItems(dispatch);
   }, []);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    map: {
+      width: "100%",
+      height: selectedItem ? "70%" : "100%",
+    },
+    itemPreview: {
+      width: "100%",
+      height: selectedItem ? "30%" : 0,
+    },
+  });
 
   return (
     <Animated.View style={{ ...styles.container, opacity: mapFadeAnim }}>
@@ -50,42 +53,17 @@ export default function Map() {
           <Marker
             key={item.id}
             coordinate={{ latitude: item.latitude, longitude: item.longitude }}
-            // title={item.name}
-            // description={item.description}
             pinColor="blue"
-            // onPress={}
-          >
-            {/* <Callout tooltip={true} style={styles.test}> */}
-            {/* <View>
-                <Text>{item.name}</Text>
-              </View> */}
-            {/* </Callout> */}
-          </Marker>
+            onPress={() => handleItemSelected(dispatch, item)}
+          ></Marker>
         ))}
-        {/* <Marker
-          key={index}
-          coordinate={marker.latlng}
-          title={marker.title}
-          description={marker.description}
-        /> */}
       </MapView>
-      <View style={styles.test}>
-        <Text></Text>
-      </View>
+      {selectedItem && (
+        <View style={styles.itemPreview}>
+          <Text>You selected {selectedItem.name}</Text>
+          <Text>description: {selectedItem.description}</Text>
+        </View>
+      )}
     </Animated.View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    width: "100%",
-    height: "70%",
-  },
-  test: {
-    backgroundColor: "transparent",
-    display: "none",
-  },
-});

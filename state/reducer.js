@@ -1,5 +1,6 @@
 const defaultApp = {
-  selectedItemId: null,
+  selectedItem: null,
+  items: [],
 };
 
 function appReducer(app, action) {
@@ -8,6 +9,12 @@ function appReducer(app, action) {
       return {
         ...app,
         selectedItem: action.item,
+      };
+    }
+    case "set-items": {
+      return {
+        ...app,
+        items: action.items,
       };
     }
     default:
