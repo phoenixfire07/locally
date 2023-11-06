@@ -27,7 +27,7 @@ export default function ItemView({ selectedItem }) {
       marginTop: 5,
       fontSize: 30,
       letterSpacing: -2,
-      zIndex: 2,
+      paddingLeft: 5,
     },
     description: {
       fontFamily: bodyFont,
@@ -39,10 +39,12 @@ export default function ItemView({ selectedItem }) {
       fontSize: 11,
       fontWeight: "bold",
       marginBottom: 5,
+      paddingLeft: 5,
     },
     descriptionContainer: {
       fontFamily: bodyFont,
-      width: expandImages ? "0%" : "50%",
+      width: expandImages ? 0 : "50%",
+      paddingBottom: 30,
     },
     borderTop: {
       borderTopColor: "black",
@@ -91,6 +93,7 @@ export default function ItemView({ selectedItem }) {
         <View style={styles.borderTop}></View>
         <View style={styles.aboutContainer}>
           <View style={styles.descriptionContainer}>
+            {/* --------- Start Short Description Section --------- */}
             <View
               style={{
                 backgroundColor: expandImages ? "transparent" : "#EFB000",
@@ -107,22 +110,34 @@ export default function ItemView({ selectedItem }) {
                 {selectedItem.shortDescription}
               </Text>
             </View>
+            {/* --------- Start About Section --------- */}
             <Text
               style={{
                 fontFamily: titleFont,
                 color: "#E4280D",
-                marginTop: 10,
+                marginTop: 15,
+                paddingLeft: 5,
               }}
             >
               About
             </Text>
-            <Text style={styles.bodyFont}>{selectedItem.description}</Text>
+            <Text
+              style={{
+                ...styles.bodyFont,
+                paddingLeft: 5,
+                marginTop: 5,
+                paddingRight: 5,
+              }}
+            >
+              {selectedItem.description}
+            </Text>
             {/* --------- Start Dont Miss Section --------- */}
             <Text
               style={{
                 fontFamily: titleFont,
-                color: brightBlue,
+                color: "#E4280D",
                 marginTop: 20,
+                paddingLeft: 5,
               }}
             >
               Don't miss...
@@ -134,12 +149,13 @@ export default function ItemView({ selectedItem }) {
                   flexDirection: "row",
                   alignItems: "center",
                   marginTop: 5,
+                  paddingLeft: 5,
                 }}
               >
                 <AntDesign
                   key={highlight}
                   name="swapright"
-                  size={15}
+                  size={20}
                   color={brightBlue}
                 />
                 <Text style={{ ...styles.bodyFont, marginLeft: 2 }}>
@@ -152,8 +168,9 @@ export default function ItemView({ selectedItem }) {
             <Text
               style={{
                 fontFamily: titleFont,
-                color: brightBlue,
+                color: "#E4280D",
                 marginTop: 20,
+                paddingLeft: 5,
               }}
             >
               Perfect for...
@@ -165,12 +182,13 @@ export default function ItemView({ selectedItem }) {
                   flexDirection: "row",
                   alignItems: "center",
                   marginTop: 5,
+                  paddingLeft: 5,
                 }}
               >
                 <AntDesign
                   key={item}
                   name="swapright"
-                  size={15}
+                  size={20}
                   color={brightBlue}
                 />
                 <Text style={{ ...styles.bodyFont, marginLeft: 2 }}>
