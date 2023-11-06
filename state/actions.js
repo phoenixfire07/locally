@@ -6,7 +6,7 @@ const handleItemSelected = (dispatch, item) => {
 };
 
 const fetchItems = (dispatch) => {
-  fetch("https://storage.googleapis.com/locally_seattle_images/test.json", {
+  fetch("https://storage.googleapis.com/locally_seattle_images/data.json", {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

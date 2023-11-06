@@ -24,4 +24,3 @@ export default function App() {
     </AppContext.Provider>
   );
 }
-// {"response": {"_bodyBlob": {"_data": [Object]}, "_bodyInit": {"_data": [Object]}, "bodyUsed": false, "headers": {"map": [Object]}, "ok": true, "status": 200, "statusText": "", "type": "default", "url": "https://storage.googleapis.com/locally_seattle_images/data.json?a=b"}}

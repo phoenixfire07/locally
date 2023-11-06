@@ -3,6 +3,8 @@ import MapView, { Marker, Callout } from "react-native-maps";
 import { StyleSheet, View, Text, Animated } from "react-native";
 import { AppContext, AppDispatchContext } from "../state/context";
 import { handleItemSelected, fetchItems } from "../state/actions";
+import ItemView from "./ItemView";
+import { brightBlue } from "../constants";
 
 export default function Map() {
   const dispatch = useContext(AppDispatchContext);
@@ -30,7 +32,7 @@ export default function Map() {
     },
     map: {
       width: "100%",
-      height: selectedItem ? "70%" : "100%",
+      height: selectedItem ? "50%" : "100%",
     },
     itemPreview: {
       width: "100%",
@@ -53,17 +55,12 @@ export default function Map() {
           <Marker
             key={item.id}
             coordinate={{ latitude: item.latitude, longitude: item.longitude }}
-            pinColor="blue"
+            pinColor={brightBlue}
             onPress={() => handleItemSelected(dispatch, item)}
           ></Marker>
         ))}
       </MapView>
-      {selectedItem && (
-        <View style={styles.itemPreview}>
-          <Text>You selected {selectedItem.name}</Text>
-          <Text>description: {selectedItem.description}</Text>
-        </View>
-      )}
+      {selectedItem && <ItemView selectedItem={selectedItem} />}
     </Animated.View>
   );
 }

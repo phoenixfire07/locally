@@ -1,18 +1,8 @@
-const backgroundColor = "#00002E";
+//colors
+const brightBlue = "#0d0bf9";
 
-const activityColors = [
-  "#C58A6A",
-  "#9B7DA4",
-  "#7D9461",
-  "#D4A64C",
-  "#9D9DC8",
-  "#BD5344",
-  "#F7C9BD",
-  "#EDC07B",
-  "#AFCBB7",
-  "#798FA8",
-  "#E47878",
-  "#5AA1A4",
-];
+//fonts
+const titleFont = "HoeflerText-BlackItalic";
+const bodyFont = "Avenir";
 
-export { backgroundColor, activityColors };
+export { titleFont, bodyFont, brightBlue };

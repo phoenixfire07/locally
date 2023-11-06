@@ -1,14 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Animated,
-  ScrollView,
-  Image,
-  Text,
-  ImageBackground,
-} from "react-native";
-import { backgroundColor } from "../constants";
+import { StyleSheet, Animated, Text, ImageBackground } from "react-native";
+import { titleFont, bodyFont, brightBlue } from "../constants";
 
 export default function Splash() {
   const seattleFadeAnim = useRef(new Animated.Value(0)).current;
@@ -54,41 +46,10 @@ export default function Splash() {
         resizeMode="cover"
         style={styles.seattleImage}
       >
-        <Image
-          style={styles.locally}
-          source={require("../images/Locally.png")}
-        />
-        <Animated.View
-          style={{ ...styles.seattleContainer, opacity: seattleFadeAnim }}
-        >
-          <Animated.Image
-            style={styles.letterS}
-            source={require("../images/S-outline.png")}
-          />
-          <Animated.Image
-            style={{ ...styles.letterE }}
-            source={require("../images/E-outline.png")}
-          />
-          <Animated.Image
-            style={{ ...styles.letterA }}
-            source={require("../images/A-outline.png")}
-          />
-          <Animated.Image
-            style={{ ...styles.letterT }}
-            source={require("../images/T-outline.png")}
-          />
-          <Animated.Image
-            style={{ ...styles.letterT }}
-            source={require("../images/T-outline.png")}
-          />
-          <Animated.Image
-            style={{ ...styles.letterL }}
-            source={require("../images/L-outline.png")}
-          />
-          <Animated.Image
-            style={{ ...styles.letterE }}
-            source={require("../images/E-outline.png")}
-          />
+        <Text style={styles.locally}>Locally</Text>
+
+        <Animated.View style={{ opacity: seattleFadeAnim }}>
+          <Text style={styles.seattle}>SEATTLE</Text>
         </Animated.View>
       </ImageBackground>
     </Animated.View>
@@ -100,50 +61,22 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
-  seattleContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignContent: "center",
-    width: 350,
-    marginTop: -25,
-  },
   locally: {
     marginTop: 80,
     width: 350,
     height: 120,
+    fontFamily: titleFont,
+    fontSize: 110,
+    letterSpacing: -7,
+    color: "white",
   },
-  letterS: {
-    padding: 4,
-    height: 35,
-    width: 41,
+  seattle: {
+    fontFamily: bodyFont,
+    fontSize: 50,
+    letterSpacing: 3,
+    marginTop: -50,
+    color: brightBlue,
   },
-  letterE: {
-    padding: 4,
-    height: 35,
-    width: 38,
-  },
-  letterA: {
-    padding: 4,
-    height: 35,
-    width: 46,
-  },
-  letterT: {
-    padding: 4,
-    height: 35,
-    width: 44,
-  },
-  letterL: {
-    padding: 4,
-    height: 35,
-    width: 37,
-  },
-  needle: {
-    height: 300,
-    width: 100,
-    marginTop: 260,
-  },
-
   seattleImage: {
     width: "100%",
     height: "100%",
@@ -151,7 +84,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     flexWrap: "wrap",
-    alignContent: "center",
-    alignItems: "center",
+    alignContent: "flex-start",
+    alignItems: "flex-start",
   },
 });
