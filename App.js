@@ -1,4 +1,5 @@
 import Splash from "./components/Splash";
+import CreatorList from "./components/CreatorList";
 import Map from "./components/Map";
 import React, { useReducer, useState, useEffect } from "react";
 import { AppContext, AppDispatchContext } from "./state/context";
@@ -18,8 +19,9 @@ export default function App() {
   return (
     <AppContext.Provider value={app}>
       <AppDispatchContext.Provider value={dispatch}>
-        {showApp && <Map></Map>}
-        {!showApp && <Splash></Splash>}
+        {/* {showApp && <Map></Map>}
+        {!showApp && <Splash></Splash>} */}
+        <CreatorList></CreatorList>
       </AppDispatchContext.Provider>
     </AppContext.Provider>
   );

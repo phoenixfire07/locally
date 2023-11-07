@@ -10,7 +10,14 @@ import {
   ImageBackground,
   Pressable,
 } from "react-native";
-import { titleFont, bodyFont, brightBlue } from "../constants";
+import {
+  titleFont,
+  bodyFont,
+  brightBlue,
+  brightRed,
+  backgroundBeige,
+  mellowYellow,
+} from "../constants";
 import { AntDesign } from "@expo/vector-icons";
 
 export default function ItemView({ selectedItem }) {
@@ -19,7 +26,7 @@ export default function ItemView({ selectedItem }) {
     itemView: {
       width: "100%",
       height: selectedItem ? "50%" : 0,
-      backgroundColor: "#fcf9e8",
+      backgroundColor: backgroundBeige,
     },
     name: {
       fontFamily: titleFont,
@@ -96,7 +103,7 @@ export default function ItemView({ selectedItem }) {
             {/* --------- Start Short Description Section --------- */}
             <View
               style={{
-                backgroundColor: expandImages ? "transparent" : "#EFB000",
+                backgroundColor: expandImages ? "transparent" : mellowYellow,
                 padding: 10,
               }}
             >
@@ -114,7 +121,7 @@ export default function ItemView({ selectedItem }) {
             <Text
               style={{
                 fontFamily: titleFont,
-                color: "#E4280D",
+                color: brightRed,
                 marginTop: 15,
                 paddingLeft: 5,
               }}
@@ -135,7 +142,7 @@ export default function ItemView({ selectedItem }) {
             <Text
               style={{
                 fontFamily: titleFont,
-                color: "#E4280D",
+                color: brightRed,
                 marginTop: 20,
                 paddingLeft: 5,
               }}
@@ -168,7 +175,7 @@ export default function ItemView({ selectedItem }) {
             <Text
               style={{
                 fontFamily: titleFont,
-                color: "#E4280D",
+                color: brightRed,
                 marginTop: 20,
                 paddingLeft: 5,
               }}
@@ -219,11 +226,11 @@ export default function ItemView({ selectedItem }) {
               >
                 {!expandImages && (
                   <>
-                    <AntDesign name="arrowleft" size={24} color={"#E4280D"} />
+                    <AntDesign name="arrowleft" size={24} color={brightRed} />
                     <Text
                       style={{
                         fontFamily: titleFont,
-                        color: "#E4280D",
+                        color: brightRed,
                         fontSize: 14,
                         marginLeft: 1,
                         marginTop: 1,
@@ -238,7 +245,7 @@ export default function ItemView({ selectedItem }) {
                     <Text
                       style={{
                         fontFamily: titleFont,
-                        color: "#E4280D",
+                        color: brightRed,
                         fontSize: 14,
                         marginLeft: 1,
                         marginTop: 1,
@@ -246,7 +253,7 @@ export default function ItemView({ selectedItem }) {
                     >
                       view full listing
                     </Text>
-                    <AntDesign name="arrowright" size={24} color={"#E4280D"} />
+                    <AntDesign name="arrowright" size={24} color={brightRed} />
                   </>
                 )}
               </Pressable>
