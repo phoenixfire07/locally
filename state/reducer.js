@@ -1,6 +1,8 @@
 const defaultApp = {
   selectedItem: null,
   items: [],
+  creators: [],
+  selectedCreator: null,
 };
 
 function appReducer(app, action) {
@@ -11,9 +13,16 @@ function appReducer(app, action) {
         selectedItem: action.item,
       };
     }
-    case "set-items": {
+    case "select-creator": {
       return {
         ...app,
+        selectedCreator: action.creator,
+      };
+    }
+    case "set-initial-state": {
+      return {
+        ...app,
+        creators: action.creators,
         items: action.items,
       };
     }

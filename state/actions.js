@@ -5,7 +5,7 @@ const handleItemSelected = (dispatch, item) => {
   });
 };
 
-const fetchItems = (dispatch) => {
+const fetchInitialState = (dispatch) => {
   fetch("https://storage.googleapis.com/locally_seattle_images/data.json", {
     headers: {
       "Content-Type": "application/json",
@@ -18,10 +18,11 @@ const fetchItems = (dispatch) => {
     })
     .then((json) => {
       dispatch({
-        type: "set-items",
-        items: json.items,
+        type: "set-initial-state",
+        items: json.mapItems,
+        creators: json.creators,
       });
     });
 };
 
-export { handleItemSelected, fetchItems };
+export { handleItemSelected, fetchInitialState };

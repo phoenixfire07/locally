@@ -1,5 +1,5 @@
-{"items": [{
-    "id": "1",
+{"mapItems": [{
+    "id": 1,
     "latitude": 47.6146389,
     "longitude": -122.3287917,
     "name": "Melrose Market",
@@ -12,8 +12,28 @@
     "address": "1527 Melrose Ave, Seattle, WA 98122",
     "googleMapsLink": "https://www.google.com/maps/place/Melrose+Market/@47.6147749,-122.3306864,17z/data=!4m14!1m7!3m6!1s0x54906b2cf22629fb:0x3741e6613809cb6!2sMelrose+Market!8m2!3d47.6147749!4d-122.3281061!16s%2Fg%2F1260nj678!3m5!1s0x54906b2cf22629fb:0x3741e6613809cb6!8m2!3d47.6147749!4d-122.3281061!16s%2Fg%2F1260nj678?entry=ttu",
     "appleMapsLink": "https://www.google.com/maps/place/Melrose+Market/@47.6147749,-122.3306864,17z/data=!4m14!1m7!3m6!1s0x54906b2cf22629fb:0x3741e6613809cb6!2sMelrose+Market!8m2!3d47.6147749!4d-122.3281061!16s%2Fg%2F1260nj678!3m5!1s0x54906b2cf22629fb:0x3741e6613809cb6!8m2!3d47.6147749!4d-122.3281061!16s%2Fg%2F1260nj678?entry=ttu",
-    "tags": ["dinner","daytime eats","drinks","shopping","activities","coffee","sweets"],
+    "dinner": true,
+    "daytimeEats:": true,
+    "shopping": true,
+    "activity": true,
+    "coffee": true, 
+    "website": "",
     "shortDescription": "Cap hill marketplace with locally owned restaurants and shops",
     "description": "Situated at the west end of the Pike-Pine neighborhood, Melrose Market is an indoor food and retail market on Capitol Hill in Seattle. It occupies a set of historic automotive buildings constructed between 1919 and 1926, which were ultimately converted into the Melrose Market. \n Opened in the spring of 2010 and just up the street from Seattle's downtown shopping district, the Market features a collection of award-winning restauranteurs and retailers including Rain Shadow Meats, Butter Home, Glasswing, Marseille, Still Liquor and Homegrown.  The project is also home to Melrose Market Studios, a large event space and catering facility featuring the original brick and exposed heavy timber structure."
-}]
+}],
+"creators":[{
+    "id":1,
+    "art":true,
+    "clothing": false,
+    "food": false,
+    "name": "Melrose Market",
+    "images": ["https://storage.googleapis.com/locally_seattle_images/melrose-1.png", "https://storage.googleapis.com/locally_seattle_images/melrose-2.png", "https://storage.googleapis.com/locally_seattle_images/melrose-3.png", "https://storage.googleapis.com/locally_seattle_images/melrose-4.png"],
+    "instagram": "https://www.instagram.com/melrosemarketseattle/?hl=en",
+    "tiktok": "",
+    "website":"", 
+    "highlights": ["burgers at blah","tea at blah"],
+    "shortDescription": "Cap hill marketplace with locally owned restaurants and shops",
+    "description": "Situated at the west end of the Pike-Pine neighborhood, Melrose Market is an indoor food and retail market on Capitol Hill in Seattle. It occupies a set of historic automotive buildings constructed between 1919 and 1926, which were ultimately converted into the Melrose Market. \n Opened in the spring of 2010 and just up the street from Seattle's downtown shopping district, the Market features a collection of award-winning restauranteurs and retailers including Rain Shadow Meats, Butter Home, Glasswing, Marseille, Still Liquor and Homegrown.  The project is also home to Melrose Market Studios, a large event space and catering facility featuring the original brick and exposed heavy timber structure."
+}
+]
 }

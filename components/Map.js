@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { StyleSheet, View, Text, Animated } from "react-native";
 import { AppContext, AppDispatchContext } from "../state/context";
-import { handleItemSelected, fetchItems } from "../state/actions";
+import { handleItemSelected, fetchInitialState } from "../state/actions";
 import ItemView from "./ItemView";
 import { brightBlue } from "../constants";
 
@@ -23,7 +23,7 @@ export default function Map() {
 
   useEffect(() => {
     fadeIn();
-    fetchItems(dispatch);
+    fetchInitialState(dispatch);
   }, []);
 
   const styles = StyleSheet.create({
@@ -60,7 +60,17 @@ export default function Map() {
           ></Marker>
         ))}
       </MapView>
-      {selectedItem && <ItemView selectedItem={selectedItem} />}
+      {selectedItem && (
+        <ItemView
+          name={selectedItem.name}
+          neighborhood={selectedItem.neighborhood}
+          shortDescription={selectedItem.shortDescription}
+          description={selectedItem.description}
+          highlights={selectedItem.highlights}
+          perfectFor={selectedItem.perfectFor}
+          images={selectedItem.images}
+        />
+      )}
     </Animated.View>
   );
 }

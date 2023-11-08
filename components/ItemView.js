@@ -20,12 +20,20 @@ import {
 } from "../constants";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function ItemView({ selectedItem }) {
+export default function ItemView({
+  name,
+  neighborhood = null,
+  shortDescription,
+  description,
+  highlights = null,
+  perfectFor = null,
+  images,
+}) {
   const [expandImages, setExpandImages] = useState(false);
   const styles = StyleSheet.create({
     itemView: {
       width: "100%",
-      height: selectedItem ? "50%" : 0,
+      height: "50%",
       backgroundColor: backgroundBeige,
     },
     name: {
@@ -95,8 +103,10 @@ export default function ItemView({ selectedItem }) {
   return (
     <View style={styles.shaddow}>
       <ScrollView style={styles.itemView}>
-        <Text style={styles.name}>{selectedItem.name}</Text>
-        <Text style={styles.neighborhood}>{selectedItem.neighborhood}</Text>
+        <Text style={styles.name}>{name}</Text>
+        {neighborhood && (
+          <Text style={styles.neighborhood}>{neighborhood}</Text>
+        )}
         <View style={styles.borderTop}></View>
         <View style={styles.aboutContainer}>
           <View style={styles.descriptionContainer}>
@@ -114,7 +124,7 @@ export default function ItemView({ selectedItem }) {
                   fontStyle: "italic",
                 }}
               >
-                {selectedItem.shortDescription}
+                {shortDescription}
               </Text>
             </View>
             {/* --------- Start About Section --------- */}
@@ -136,73 +146,82 @@ export default function ItemView({ selectedItem }) {
                 paddingRight: 5,
               }}
             >
-              {selectedItem.description}
+              {description}
             </Text>
             {/* --------- Start Dont Miss Section --------- */}
-            <Text
-              style={{
-                fontFamily: titleFont,
-                color: brightRed,
-                marginTop: 20,
-                paddingLeft: 5,
-              }}
-            >
-              Don't miss...
-            </Text>
-            {selectedItem.highlights.map((highlight) => (
-              <View
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginTop: 5,
-                  paddingLeft: 5,
-                }}
-              >
-                <AntDesign
-                  key={highlight}
-                  name="swapright"
-                  size={20}
-                  color={brightBlue}
-                />
-                <Text style={{ ...styles.bodyFont, marginLeft: 2 }}>
-                  {highlight}
+            {highlights && (
+              <>
+                <Text
+                  style={{
+                    fontFamily: titleFont,
+                    color: brightRed,
+                    marginTop: 20,
+                    paddingLeft: 5,
+                  }}
+                >
+                  Don't miss...
                 </Text>
-              </View>
-            ))}
+                {highlights.map((highlight) => (
+                  <View
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginTop: 5,
+                      paddingLeft: 5,
+                    }}
+                  >
+                    <AntDesign
+                      key={highlight}
+                      name="swapright"
+                      size={20}
+                      color={brightBlue}
+                    />
+                    <Text style={{ ...styles.bodyFont, marginLeft: 2 }}>
+                      {highlight}
+                    </Text>
+                  </View>
+                ))}
+              </>
+            )}
+
             {/* --------- End Dont Miss Section --------- */}
             {/* --------- Start Perfect For Section --------- */}
-            <Text
-              style={{
-                fontFamily: titleFont,
-                color: brightRed,
-                marginTop: 20,
-                paddingLeft: 5,
-              }}
-            >
-              Perfect for...
-            </Text>
-            {selectedItem.perfectFor.map((item) => (
-              <View
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginTop: 5,
-                  paddingLeft: 5,
-                }}
-              >
-                <AntDesign
-                  key={item}
-                  name="swapright"
-                  size={20}
-                  color={brightBlue}
-                />
-                <Text style={{ ...styles.bodyFont, marginLeft: 2 }}>
-                  {item}
+            {perfectFor && (
+              <>
+                <Text
+                  style={{
+                    fontFamily: titleFont,
+                    color: brightRed,
+                    marginTop: 20,
+                    paddingLeft: 5,
+                  }}
+                >
+                  Perfect for...
                 </Text>
-              </View>
-            ))}
+                {perfectFor.map((item) => (
+                  <View
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginTop: 5,
+                      paddingLeft: 5,
+                    }}
+                  >
+                    <AntDesign
+                      key={item}
+                      name="swapright"
+                      size={20}
+                      color={brightBlue}
+                    />
+                    <Text style={{ ...styles.bodyFont, marginLeft: 2 }}>
+                      {item}
+                    </Text>
+                  </View>
+                ))}
+              </>
+            )}
             {/* --------- End Perfect For Section --------- */}
           </View>
           <View style={styles.imagesContainer}>
@@ -258,7 +277,7 @@ export default function ItemView({ selectedItem }) {
                 )}
               </Pressable>
             </View>
-            {selectedItem.images.map((source, index) => (
+            {images.map((source, index) => (
               <ImageBackground
                 key={source}
                 source={{ uri: source }}
